@@ -4,16 +4,17 @@
       <template v-slot:default="{ hide }">
         <div class="p-3">
           <b-navbar-brand href="#">
-            <img src="https://placekitten.com/g/30/30" class="d-inline-block align-top" alt="Kitten">
-            Vue
+            <img src="../assets/logo.png" class="d-inline-block align-top" alt="Logo">
+            
             </b-navbar-brand>
-            <button class="close-nav btn-info" variant="primary" block @click="hide" rigth> X </button>
+            <button class="close-nav btn-info" variant="primary" block @click="hide"> X </button>
             <hr />
           <nav class="mb-3">
             <b-nav vertical>
-              <b-nav-item active @click="hide">Active</b-nav-item>
-              <b-nav-item href="/about" @click="hide">About</b-nav-item>
-              <b-nav-item href="#link-2" @click="hide">Another Link</b-nav-item>
+              <b-nav-item to="/home" exact exact-active-class="active" active @click="hide"><b-icon-award></b-icon-award> General <b-icon-chevron-compact-right class="close-nav"></b-icon-chevron-compact-right></b-nav-item>
+              <b-nav-item to="/empresas" exact exact-active-class="active" active @click="hide"><b-icon-building></b-icon-building> Empresas <b-icon-chevron-compact-right class="close-nav"></b-icon-chevron-compact-right> </b-nav-item>
+              <b-nav-item to="/impuestos" exact exact-active-class="active" @click="hide"><b-icon-pen></b-icon-pen> Impuestos <b-icon-chevron-compact-right class="close-nav"></b-icon-chevron-compact-right> </b-nav-item>
+              <b-nav-item to="/declaraciones" exact exact-active-class="active" @click="hide"><b-icon-file-earmark></b-icon-file-earmark> Declaraciones <b-icon-chevron-compact-right class="close-nav"></b-icon-chevron-compact-right> </b-nav-item>
             </b-nav>
           </nav>
           
