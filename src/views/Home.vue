@@ -2,7 +2,7 @@
   <div class="home">
     <Nav_m />
     <Side_b />
-    <img alt="Vue logo" src="../assets/logo.png">
+    <!--<img alt="Vue logo" src="../assets/logo.png">-->
     <HelloWorld />
   </div>
 </template>
