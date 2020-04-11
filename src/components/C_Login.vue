@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="login row justify-content-center align-items-center vh-100">
     <div class="wrapper fadeInDown">
   <div id="formContent">
     <!-- Tabs Titles -->
@@ -10,7 +10,7 @@
     </div>
 
     <!-- Login Form -->
-    <div id="login">
+    <div id="login col-sm-4">
         <input type="text" id="user" class="fadeIn second" name="username" v-model="input.usr" placeholder="Username" />
         <input type="password" id="password" class="fadeIn third" name="password" v-model="input.pwd" placeholder="Password" />
         <input type="button" class="fadeIn fourth" v-on:click="login()" value="Iniciar Sesion" />
