@@ -38,28 +38,36 @@ export default {
             }
         },
     methods: {
-        login: function () {
-            if(this.input.usr == "sysadmin" && this.input.pwd == "masterkey"){
-                this.$session.start()
-                this.$session.set('user', 'Admin')
-                this.$router.push('/home')
-            }else{                
-                alert('Por favor verifica tus credenciales')
-            }
+       login: function() {
+            var self = this            
+            var headers = {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                "access-control-allow-origin": "*",
+                "Access-Control-Allow-Headers": "Content-Type, Authorization"
+            };
             /*Your axios post for login*/
-          /*this.$http.post('http://somehost/user/login', {
-            password: this.password,
-            email: this.email
-          }).then(function (response) {
-            if (response.status === 200 && 'token' in response.body) {
-              /*this.$session.start()
-              this.$session.set('jwt', response.body.token)
-              //Vue.http.headers.common['Authorization'] = 'Bearer ' + response.body.token
-              this.$router.push('/panel/search')*
-            }
-          }, function (err) {
-            console.log('err', err)
-          })*/
+            this.$http.post(this.$url + 'login_endpoint', {
+                headers: headers,
+                usr_name: this.input.usr,
+                usr_pass: this.input.pwd
+            }).then(function(response) {
+                if (response.data.success == true) {
+                    self.$session.start()
+                    self.$session.set('token', response.data.data.token)
+                    self.$session.set('username', response.data.data.usr_name)
+                    self.$session.set('userid', response.data.data.user_id)
+                    self.$session.set('user_role', response.data.data.user_role)
+                    self.$session.set('clinic_assign', response.data.data.clinic_assign)
+                    //Vue.http.headers.common['Authorization'] = 'Bearer ' + response.body.token
+                    self.$router.push('citas')
+                } else if (response.data.success == false) {
+                    alert('Usuario y/o contraseña incorrectos. Por favor revisa tus credenciales.')
+                }
+            }, function(err) {
+                console.log('err', err)
+                alert('Usuario y/o contraseña incorrectos. Por favor revisa tus credenciales.')
+            })
         }
     }
 }
